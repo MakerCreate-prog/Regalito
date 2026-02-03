@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra Historia ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle,#2a0015,#0b0010);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  overflow:hidden;
+}
+
+/* ===== FONDO CORAZONES ===== */
+.corazones{
+  position:fixed;
+  inset:0;
+  z-index:1;
+}
+
+.corazon{
+  position:absolute;
+  color:rgba(255,120,180,.45);
+  animation: flotar linear infinite;
+  filter:drop-shadow(0 0 6px rgba(255,120,180,.8));
+}
+
+@keyframes flotar{
+  from{ transform:translateY(110vh) scale(.6); }
+  to{ transform:translateY(-15vh) scale(1.2); }
+}
+
+/* ===== FOTOS DECORATIVAS ===== */
+.foto{
+  position:absolute;
+  width:180px;   /* ⬅ antes 140px */
+  height:180px;  /* ⬅ antes 140px */
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:
+    0 0 35px rgba(255,105,180,.8),
+    inset 0 0 15px rgba(255,255,255,.5);
+  animation: giroLento 28s linear infinite;
+  z-index:6;
+}
+
+.foto img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.f1{ top:4%; left:4%; }
+.f2{ top:4%; right:4%; }
+.f3{ bottom:4%; left:4%; }
+.f4{ bottom:4%; right:4%; }
+
+@keyframes giroLento{
+  from{ transform:rotate(0deg); }
+  to{ transform:rotate(360deg); }
+}
+
+
+/* ===== CARTA ===== */
+.carta{
+  position:relative;
+  max-width:600px;
+  max-height:80vh;
+  background:linear-gradient(145deg,#fff9fc,#ffe6f2);
+  padding:45px 40px;
+  border-radius:28px;
+  z-index:4;
+  font-family:'Playfair Display', serif;
+  border:2px solid rgba(255,170,210,.6);
+  box-shadow:
+    0 0 90px rgba(255,120,180,.7),
+    inset 0 0 40px rgba(255,200,220,.6);
+  animation: latido 3s infinite;
+  overflow-y:auto;
+}
+
+/* Scroll bonito */
+.carta::-webkit-scrollbar{
+  width:6px;
+}
+.carta::-webkit-scrollbar-thumb{
+  background:rgba(255,120,180,.5);
+  border-radius:10px;
+}
+
+/* Decoración carta */
+.carta::before,
+.carta::after{
+  content:"❦ ❦ ❦";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#d46a9e;
+  opacity:.6;
+}
+
+.carta::before{ top:14px; }
+.carta::after{ bottom:14px; }
+
+@keyframes latido{
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.015); }
+}
+
+h1{
+  text-align:center;
+  margin-bottom:22px;
+  color:#7a003c;
+}
+
+#texto{
+  line-height:1.85;
+  font-size:1.02rem;
+  color:#4a0030;
+  white-space:pre-line;
+}
+
+.firma{
+  margin-top:30px;
+  text-align:right;
+  font-weight:bold;
+  color:#7a003c;
+}
+
+/* ===== MENSAJE FINAL ===== */
+.final{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  opacity:0;
+  pointer-events:none;
+  z-index:10;
+}
+
+.final.mostrar{
+  opacity:1;
+  animation: aparecer 2.5s ease;
+}
+
+.final span{
+  font-family:'Great Vibes', cursive;
+  font-size:3.2rem;
+  color:#ffd1ea;
+  text-shadow:
+    0 0 20px rgba(255,120,180,1),
+    0 0 40px rgba(255,120,180,.7);
+  animation: latido 2s infinite;
+}
+
+@keyframes aparecer{
+  from{ transform:scale(.8); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:480px){
+  .foto{
+    width:95px;
+    height:95px;
+    opacity:.85;
+  }
+}
+
+@media(max-width:600px){
+  .foto{
+    display:none;
+  }
+
+  .carta{
+    max-width:95%;
+    padding:35px 25px;
+  }
+
+  .final span{
+    font-size:2.2rem;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 🎶 MÚSICA -->
+<audio autoplay loop>
+  <source src="musica/romantica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CORAZONES -->
+<div class="corazones" id="corazones"></div>
+
+<!-- 4 FOTOS -->
+<div class="foto f1"><img src="img/preciosa5.jpg"></div>
+<div class="foto f2"><img src="img/preciosa6.jpg"></div>
+<div class="foto f3"><img src="img/preciosa7.jpg"></div>
+<div class="foto f4"><img src="img/preciosa8.jpg"></div>
+
+<!-- CARTA -->
+<div class="carta">
+  <h1>Moshito Mio, Hermosa 💕</h1>
+  <div id="texto"></div>
+
+  <div class="firma">
+    Con todo mi amor,<br>
+    Preciosa ❤️
+  </div>
+</div>
+
+<!-- FINAL -->
+<div class="final" id="final">
+  <span>
+    Te amo muchiiiiiiiiiiiiiiiiiiiisimo<br>
+    moshito mío 💖
+  </span>
+</div>
+
+<script>
+/* ===== TEXTO ORIGINAL (INTOCABLE) ===== */
+const textoCompleto = `
+Bueno pues quise intentar hacer algo bonito para ti,
+algo que se me ocurrió de la nd, yo iba a dormir y pues se me ocurrió,
+justo cuando te dormiste xd.
+Desde el primer momento supe que había algo especial entre nosotros.
+Como ese día que nos conocimos, recuerdo cada detalle,
+tu sonrisa, tu mirada, y como de que me pidieras el celular prestado
+para llamar pasara a que yo te explique lo que había estudiado
+para el examen (ojo si estaba estudiando -_-) jajajajja.
+
+Luego también los momentos que salimos,
+ya sea a pasear por Qhatu, ir al parque, el café,
+el picnic que fue cuando me robé una sábana de mi casa
+para ponértela allí jajaja.
+Y todos esos momentos tan lindos que hemos compartido juntos,
+y los que nos faltan por vivir.
+
+Mi vida hermosa,
+quiero que sepas que eres muy especial para mí.
+Cada segundo, cada minutito a tu lado es único y especial.
+Gracias por tu sonrisa, tu ternura, tu amor, por tu paciencia y por todo mi vida.
+Te amo con todo mi corazoncito hermoso y espero que este detalle te guste mucho.
+Peshosha.
+`;
+
+const textoDiv = document.getElementById("texto");
+let i = 0;
+
+function escribir(){
+  if(i < textoCompleto.length){
+    textoDiv.textContent += textoCompleto.charAt(i);
+    i++;
+    setTimeout(escribir, 70);
+  } else {
+    setTimeout(mostrarFinal, 1500);
+  }
+}
+escribir();
+
+/* FINAL */
+function mostrarFinal(){
+  document.getElementById("final").classList.add("mostrar");
+  fuegos();
+}
+
+/* CORAZONES */
+const cont = document.getElementById("corazones");
+for(let i=0;i<40;i++){
+  const c = document.createElement("div");
+  c.classList.add("corazon");
+  c.innerHTML="❤";
+  c.style.left=Math.random()*100+"vw";
+  c.style.fontSize=(15+Math.random()*30)+"px";
+  c.style.animationDuration=(8+Math.random()*12)+"s";
+  cont.appendChild(c);
+}
+
+/* FUEGOS */
+function fuegos(){
+  for(let i=0;i<30;i++){
+    const f = document.createElement("div");
+    f.innerHTML="💖";
+    f.style.position="fixed";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top="100vh";
+    f.style.fontSize="26px";
+    f.style.zIndex="20";
+    f.style.animation=`fuego ${2+Math.random()*2}s ease-out forwards`;
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),4000);
+  }
+}
+
+const style = document.createElement("style");
+style.innerHTML = `
+@keyframes fuego{
+  to{
+    transform:translateY(-120vh) scale(1.6);
+    opacity:0;
+  }
+}`;
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>

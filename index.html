@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti Mi Vida ❤️</title>
+
+<style>
+:root{
+  --rosa:#ff5fa2;
+  --vino:#7a003c;
+  --fondo:#0b0010;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Georgia', serif;
+}
+
+body{
+  background: radial-gradient(circle at top, #2a0015, #0b0010);
+  height:100vh;
+  overflow:hidden;
+  color:white;
+}
+
+/* OSCURECER FONDO */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:2;
+}
+
+/* ===================== */
+/* CORAZONES + ❦ FLOTANDO */
+/* ===================== */
+.corazones{
+  position:fixed;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:1;
+}
+
+.corazon{
+  position:absolute;
+  color:rgba(255,105,180,.35);
+  font-size:20px;
+  animation: flotar linear infinite;
+}
+
+.corazon.decor{
+  content:"❦";
+  font-size:18px;
+  opacity:.35;
+}
+
+@keyframes flotar{
+  from{ transform:translateY(100vh) scale(.6); }
+  to{ transform:translateY(-10vh) scale(1.2); }
+}
+
+/* ===================== */
+/* CARTA PRINCIPAL ✨     */
+/* ===================== */
+.carta{
+  position:relative;
+  z-index:5;
+  width:90%;
+  max-width:420px;
+  margin:auto;
+  top:50%;
+  transform:translateY(-50%);
+  background:linear-gradient(145deg,#fff7fb,#ffe3f1);
+  color:#4a0030;
+  padding:36px 30px;
+  border-radius:20px;
+  text-align:center;
+  overflow:hidden;
+  box-shadow:
+    0 0 40px rgba(255,105,180,.6),
+    0 0 90px rgba(255,105,180,.25);
+  animation: aparecer 2s ease;
+}
+
+/* BRILLO RECORRIENDO CARTA */
+.carta::after{
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background:linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,.35),
+    transparent 60%
+  );
+  animation: brillo 6s linear infinite;
+}
+
+@keyframes brillo{
+  from{ transform:translateX(-100%); }
+  to{ transform:translateX(100%); }
+}
+
+/* DECORACIÓN ❦ ❦ ❦ */
+.carta::before{
+  content:"❦ ❦ ❦";
+  display:block;
+  color:var(--rosa);
+  font-size:1.2rem;
+  letter-spacing:6px;
+  opacity:.7;
+  margin-bottom:14px;
+}
+
+@keyframes aparecer{
+  from{ opacity:0; transform:translateY(-40%) scale(.9); }
+  to{ opacity:1; transform:translateY(-50%) scale(1); }
+}
+
+.carta h1{
+  font-size:1.8rem;
+  margin-bottom:10px;
+}
+
+.carta p{
+  font-size:.95rem;
+  line-height:1.65;
+  margin-bottom:24px;
+}
+
+/* ===================== */
+/* BOTÓN ❤️              */
+/* ===================== */
+.boton{
+  background:linear-gradient(135deg,#ff5fa2,#ff89c2);
+  color:white;
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  font-size:1rem;
+  cursor:pointer;
+  text-decoration:none;
+  box-shadow:0 0 20px rgba(255,95,162,.6);
+  animation: latido 1.6s infinite;
+  transition:.3s;
+}
+
+.boton:hover{
+  animation: vibrar .15s infinite, latido 1.6s infinite;
+  box-shadow:0 0 40px rgba(255,95,162,.9);
+}
+
+@keyframes latido{
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.12); }
+}
+
+@keyframes vibrar{
+  0%{ transform:translateX(0); }
+  25%{ transform:translateX(-2px); }
+  50%{ transform:translateX(2px); }
+  75%{ transform:translateX(-2px); }
+  100%{ transform:translateX(0); }
+}
+
+/* ===================== */
+/* FOTOS GIRANDO 📸      */
+/* ===================== */
+.foto{
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:0 0 30px rgba(255,105,180,.8);
+  animation: girarZoom 22s linear infinite;
+  z-index:3;
+}
+
+.foto img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+@keyframes girarZoom{
+  0%{ transform:rotate(0deg) scale(1); }
+  50%{ transform:rotate(180deg) scale(1.12); }
+  100%{ transform:rotate(360deg) scale(1); }
+}
+
+.f1{ top:15px; left:15px;}
+.f2{ top:15px; right:15px;}
+.f3{ bottom:15px; left:15px;}
+.f4{ bottom:15px; right:15px;}
+
+@media(max-width:480px){
+  .foto{
+    width:95px;
+    height:95px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="corazones" id="corazones"></div>
+
+<!-- FOTOS -->
+<div class="foto f1"><img src="img/Preciosa1.jpg"></div>
+<div class="foto f2"><img src="img/preciosa2.jpg"></div>
+<div class="foto f3"><img src="img/preciosa3.jpg"></div>
+<div class="foto f4"><img src="img/preciosa4.jpg"></div>
+
+<!-- CARTA -->
+<div class="carta">
+  <h1>Para Mi vida Hermosisima 💖</h1>
+  <p>
+    Desde que llegaste a mi vida, todo tiene más color,
+    más sentido y más amor…
+  </p>
+  <p><strong>Kalheb 💌</strong></p>
+
+  <a href="carta.html" class="boton">Abrir carta 💕</a>
+</div>
+
+<script>
+const contenedor = document.getElementById("corazones");
+for(let i=0;i<40;i++){
+  const c = document.createElement("div");
+  c.classList.add("corazon");
+  c.innerHTML="❤";
+  c.style.left=Math.random()*100+"vw";
+  c.style.fontSize=(15+Math.random()*25)+"px";
+  c.style.animationDuration=(8+Math.random()*10)+"s";
+  contenedor.appendChild(c);
+}
+</script>
+
+</body>
+</html>
